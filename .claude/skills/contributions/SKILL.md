@@ -3,7 +3,7 @@ name: contributions
 description: Analyze a repository for contributor activity since a given date — commit counts per author and a qualitative assessment of the complexity and significance of each contributor's work. Use when asked to evaluate contributions or contributor activity.
 disable-model-invocation: true
 argument-hint: [repo-directory] [since-date]
-allowed-tools: Read, Glob, Grep, Bash(git:*), Write(*contributions-*.md)
+allowed-tools: Read, Glob, Grep, Bash, Write(*contributions-*.md)
 ---
 
 # Repository Contribution Analysis

@@ -3,7 +3,7 @@ name: design-review
 description: Evaluate the technical merit of a chip design project repository — covering design specification, replicability, organization, readability, IPs/licenses, testing, and completeness. Use when asked to review or evaluate a hardware/chip design repo.
 disable-model-invocation: true
 argument-hint: [repo-directory]
-allowed-tools: Read, Glob, Grep, Bash(git:*), Write(*design-review-*.md)
+allowed-tools: Read, Glob, Grep, Bash, Write(*design-review-*.md)
 ---
 
 # Chip Design Technical Review

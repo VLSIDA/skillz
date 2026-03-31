@@ -3,7 +3,7 @@ name: prompt-injection-audit
 description: Scan a repository for prompt injection attacks — hidden or obfuscated text in code, comments, filenames, commit messages, READMEs, or other files that attempt to manipulate AI-generated reviews or reports. Use when auditing a repo for adversarial content.
 disable-model-invocation: true
 argument-hint: [repo-directory]
-allowed-tools: Read, Glob, Grep, Bash(git:*), Write(*prompt-injection-audit-*.md)
+allowed-tools: Read, Glob, Grep, Bash, Write(*prompt-injection-audit-*.md)
 ---
 
 # Prompt Injection Audit

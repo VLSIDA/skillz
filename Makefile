@@ -17,27 +17,27 @@ AUDIT_PDF = $(foreach g,$(GROUPS),prompt-injection-audit-$(g).pdf)
 all: $(REVIEWS_PDF)
 
 design-review-%.md: %
-	claude -p --verbose --permission-mode acceptEdits --allowedTools "Read,Glob,Grep,Bash(git:*),Write(*design-review-*.md)" -- "/design-review $<"
+	printf '%s\n%s\n' "/design-review $<" "/exit" | claude --verbose
 
 %.pdf: %.md
 	sed 's/^- /\n- /' $< | pandoc -f markdown -o $@ --pdf-engine=xelatex -V geometry:margin=1in
 
 define contributions_rule
 contributions-$(1)-$$(DATE).md: $(1)
-	claude -p --verbose --permission-mode acceptEdits --allowedTools "Read,Glob,Grep,Bash(git:*),Write(*contributions-*.md)" -- "/contributions $(1) $$(SINCE)"
+	printf '%s\n%s\n' "/contributions $(1) $$(SINCE)" "/exit" | claude --verbose
 	mv contributions-$(1).md $$@
 endef
 $(foreach g,$(GROUPS),$(eval $(call contributions_rule,$(g))))
 
 define weekly_rule
 weekly-$(1)-$$(DATE).md: $(1)
-	claude -p --verbose --permission-mode acceptEdits --allowedTools "Read,Glob,Grep,Bash(git:*),Write(*weekly-*.md)" -- "/weekly $(1) $$(SINCE)"
+	printf '%s\n%s\n' "/weekly $(1) $$(SINCE)" "/exit" | claude --verbose
 	mv weekly-$(1).md $$@
 endef
 $(foreach g,$(GROUPS),$(eval $(call weekly_rule,$(g))))
 
 prompt-injection-audit-%.md: %
-	claude -p --verbose --permission-mode acceptEdits --allowedTools "Read,Glob,Grep,Bash(git:*),Write(*prompt-injection-audit-*.md)" -- "/prompt-injection-audit $<"
+	printf '%s\n%s\n' "/prompt-injection-audit $<" "/exit" | claude --verbose
 
 ifdef GROUP
 design-review: design-review-$(GROUP).md design-review-$(GROUP).pdf
