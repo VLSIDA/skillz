@@ -3,7 +3,7 @@ name: contributions
 description: Analyze a repository for contributor activity since a given date — commit counts per author and a qualitative assessment of the complexity and significance of each contributor's work. Use when asked to evaluate contributions or contributor activity.
 disable-model-invocation: true
 argument-hint: [repo-directory] [since-date]
-allowed-tools: Read, Glob, Grep, Bash, Write(*contributions-*.md)
+allowed-tools: Read, Glob, Grep, Bash, Edit(*contributions-*.md), Write(*contributions-*.md)
 ---
 
 # Repository Contribution Analysis
@@ -13,7 +13,7 @@ Analyze contributions to the repository at `$ARGUMENTS`.
 - The first argument is the repo directory (relative to the current working directory). If not provided, use the current working directory.
 - The second argument is a date in `YYYY-MM-DD` format. If not provided, default to two weeks before today's date.
 
-Output your report to a markdown file named `contributions-<repo>.md` in the current working directory (NOT inside the repo), where `<repo>` is the basename of the repository directory.
+Output your report to the pre-existing file `contributions-<repo>.md` in the current working directory (NOT inside the repo), where `<repo>` is the basename of the repository directory. The file already exists — use the Edit tool to write the content, do NOT use the Write tool.
 
 ## Pre-Review: Update Repository
 

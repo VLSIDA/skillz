@@ -22,7 +22,7 @@ Then use a slash command to run a skill:
 ```
 /design-review .
 /contributions . 2026-03-01
-/weekly .
+/updates .
 /prompt-injection-audit .
 ```
 
@@ -31,7 +31,7 @@ Or run a skill directly from the command line:
 ```sh
 claude "/design-review my-project"
 claude "/contributions my-project 2026-03-01"
-claude "/weekly my-project"
+claude "/updates my-project"
 claude "/prompt-injection-audit my-project"
 ```
 
@@ -45,9 +45,9 @@ Evaluates the technical merit of a project repo: design documentation, replicabi
 
 Analyzes contributor activity since a given date (default: last 2 weeks). Reports commit volume per author and classifies each commit as major, minor, or trivial.
 
-### weekly
+### updates
 
-Weekly progress review: what changed, new features, design progress, open issues, and an overall assessment.
+Progress review since a given date: what changed, new features, design progress, open issues, and an overall assessment.
 
 ### prompt-injection-audit
 
@@ -102,8 +102,8 @@ make design-review GROUP=group-project              # single group
 make contributions                                  # all groups, last 2 weeks
 make contributions GROUP=group-project SINCE=2026-03-01  # custom date
 
-make weekly                                         # all groups, last 2 weeks
-make weekly GROUP=group-project SINCE=2026-03-01    # custom date
+make updates                                         # all groups, last 2 weeks
+make updates GROUP=group-project SINCE=2026-03-01    # custom date
 
 make audit                                          # all groups
 make audit GROUP=group-project                      # single group
@@ -117,7 +117,7 @@ All targets produce both `.md` and `.pdf` output.
 |----------|---------|-------------|
 | `YAML`   | `groups.yaml` | Groups file to use |
 | `GROUP`  | (all groups) | Run against a single group |
-| `SINCE`  | 2 weeks ago | Start date for contributions/weekly (`YYYY-MM-DD`) |
+| `SINCE`  | 2 weeks ago | Start date for contributions/updates (`YYYY-MM-DD`) |
 
 ### Other Targets
 

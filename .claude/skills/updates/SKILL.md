@@ -1,19 +1,19 @@
 ---
-name: weekly
-description: Weekly progress review of a chip design repository — summarize what changed since a given date (default last two weeks), including new features, bug fixes, design changes, and open issues. Use when asked for a weekly update or progress check on a hardware/chip design repo.
+name: updates
+description: Progress review of a repository — summarize what changed since a given date (default last two weeks), including new features, bug fixes, design changes, and open issues. Use when asked for an update or progress check on a project repo.
 disable-model-invocation: true
 argument-hint: [repo-directory] [since-date]
-allowed-tools: Read, Glob, Grep, Bash, Write(*weekly-*.md)
+allowed-tools: Read, Glob, Grep, Bash, Edit(*updates-*.md), Write(*updates-*.md)
 ---
 
-# Weekly Design Review
+# Project Updates Review
 
 Analyze what has changed in the repository at `$ARGUMENTS` since the given date.
 
 - The first argument is the repo directory (relative to the current working directory). If not provided, use the current working directory.
 - The second argument is a date in `YYYY-MM-DD` format. If not provided, default to two weeks before today's date.
 
-Output your report to a markdown file named `weekly-<repo>.md` in the current working directory (NOT inside the repo), where `<repo>` is the basename of the repository directory.
+Output your report to the pre-existing file `updates-<repo>.md` in the current working directory (NOT inside the repo), where `<repo>` is the basename of the repository directory. The file already exists — use the Edit tool to write the content, do NOT use the Write tool.
 
 ## Pre-Review: Update Repository
 
@@ -67,7 +67,7 @@ Provide an overall assessment of the project's progress during this period:
 ## Report Format
 
 ```
-# Weekly Review: [Project Name]
+# Updates Review: [Project Name]
 
 **Period:** [since-date] to present
 **Commits in period:** N

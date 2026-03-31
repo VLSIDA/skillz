@@ -3,14 +3,14 @@ name: design-review
 description: Evaluate the technical merit of a chip design project repository — covering design specification, replicability, organization, readability, IPs/licenses, testing, and completeness. Use when asked to review or evaluate a hardware/chip design repo.
 disable-model-invocation: true
 argument-hint: [repo-directory]
-allowed-tools: Read, Glob, Grep, Bash, Write(*design-review-*.md)
+allowed-tools: Read, Glob, Grep, Bash, Edit(*design-review-*.md), Write(*design-review-*.md)
 ---
 
 # Chip Design Technical Review
 
 Evaluate the repository at `$ARGUMENTS` (relative to the current working directory) against the rubric below. If no argument is provided, evaluate the current working directory.
 
-Output your report to a markdown file named `design-review-<repo>.md` in the current working directory (NOT inside the repo), where `<repo>` is the basename of the repository directory (e.g., for `slugtpu/`, the file is `./design-review-slugtpu.md`). Do NOT convert the markdown to PDF — that step is handled separately by the Makefile.
+Output your report to the pre-existing file `design-review-<repo>.md` in the current working directory (NOT inside the repo), where `<repo>` is the basename of the repository directory (e.g., for `slugtpu/`, the file is `./design-review-slugtpu.md`). The file already exists — use the Edit tool to write the content, do NOT use the Write tool. Do NOT convert the markdown to PDF — that step is handled separately by the Makefile.
 
 ## Pre-Review: Update Repository
 
