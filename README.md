@@ -1,10 +1,10 @@
 # Project Repo Review Tools
 
-Automated review tools for project repositories using [Claude Code](https://claude.ai/claude-code) skills.
+Automated review tools for project repositories using [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skills.
 
 ## Prerequisites
 
-- [Claude Code](https://claude.ai/claude-code) CLI (`claude`)
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI (`claude`)
 - `pandoc` with `xelatex` (for PDF generation)
 - `git`, `bash`
 
