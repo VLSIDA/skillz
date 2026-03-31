@@ -3,7 +3,7 @@ name: weekly
 description: Weekly progress review of a chip design repository — summarize what changed since a given date (default last two weeks), including new features, bug fixes, design changes, and open issues. Use when asked for a weekly update or progress check on a hardware/chip design repo.
 disable-model-invocation: true
 argument-hint: [repo-directory] [since-date]
-allowed-tools: Read, Glob, Grep, Bash(git:*), Write(*/weekly-*.md)
+allowed-tools: Read, Glob, Grep, Bash(git:*), Write(*weekly-*.md)
 ---
 
 # Weekly Design Review

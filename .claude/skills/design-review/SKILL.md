@@ -3,7 +3,7 @@ name: design-review
 description: Evaluate the technical merit of a chip design project repository — covering design specification, replicability, organization, readability, IPs/licenses, testing, and completeness. Use when asked to review or evaluate a hardware/chip design repo.
 disable-model-invocation: true
 argument-hint: [repo-directory]
-allowed-tools: Read, Glob, Grep, Bash(git:*), Write(*/design-review-*.md)
+allowed-tools: Read, Glob, Grep, Bash(git:*), Write(*design-review-*.md)
 ---
 
 # Chip Design Technical Review
@@ -32,13 +32,14 @@ If any of these commands fail, note the failure in the report but continue with 
 
 ## Rubric
 
-### 0. Design Specification
-Check if there is a file called `report.pdf` in the repository root. If not found, look for any other `*.pdf` file in the repo root — if there is exactly one, assume it is the design specification. If found, read it and:
-- Summarize the quality of the specification (clarity, completeness, formatting).
-- Confirm that the repository contents correspond to what the specification describes, noting any significant differences (e.g., features described but not implemented, or implemented features not mentioned in the spec).
-- Do NOT mention the filename in your report.
-
-If no suitable PDF is found, skip this section entirely.
+### 0. Design Documentation
+Search the repository for all documentation that describes the design: README files, markdown documents, wiki pages, comments in top-level modules, and any other descriptive files. Assess:
+- Is there enough documentation to understand what the project is, what it does, and how it works?
+- Does the documentation describe the architecture, module hierarchy, interfaces, and design decisions?
+- Does it cover the intended functionality, constraints, and trade-offs?
+- Is the documentation accurate — does it match what is actually implemented in the code?
+- Are there significant features in the code that are undocumented, or documented features that are not implemented?
+- Rate the overall sufficiency of the design documentation for someone new to the project.
 
 ### 1. Replicability
 - Does the repo include step-by-step instructions to replicate the results?
@@ -77,10 +78,10 @@ Use the following markdown structure for the report:
 ```
 # Chip Design Review: [Project Name]
 
-## 0. Design Specification — [Rating]
-(Only if report.pdf exists; omit this section otherwise)
-[Quality summary]
-[Correspondence with repo — differences noted]
+## 0. Design Documentation — [Rating]
+[What documentation exists and where]
+[Sufficiency assessment — does it adequately describe the project?]
+[Gaps — what is missing or inaccurate?]
 
 ## 1. Replicability — [Rating]
 [Analysis]
