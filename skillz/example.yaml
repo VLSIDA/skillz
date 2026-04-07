@@ -1,0 +1,28 @@
+groups:
+  - projects: "Example Group Project"
+    repo: https://github.com/org/group-project
+    members:
+      - name: Student One
+        email: XXX@ucsc.edu
+      - name: Student Two
+        email: XXX@ucsc.edu
+      - name: Student Three
+        email: XXX@ucsc.edu
+
+  - projects: "Another Group Project"
+    repo: https://github.com/org/another-project
+    members:
+      - name: Student Four
+        email: XXX@ucsc.edu
+      - name: Student Five
+        email: XXX@ucsc.edu
+      - name: Student Six
+        email: XXX@ucsc.edu
+      - name: Student Seven
+        email: XXX@ucsc.edu
+
+  - projects: "Grad Student Individual Project"
+    repo: https://github.com/jdoe/grad-project
+    members:
+      - name: Grad Student One
+        email: XXX@ucsc.edu

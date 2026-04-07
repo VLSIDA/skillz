@@ -1,0 +1,111 @@
+groups:
+  - projects: "Combined G/J: G. Matrix Multiplication Accelerator, J. Math/ALU Accelerator"
+    name: group-g
+    repo: https://github.com/MrPoloGit/group-g
+    members:
+      - name: Dalton Gaddy
+        email: dgaddy@ucsc.edu
+      - name: Jason Waseq
+        email: jwaseq@ucsc.edu
+      - name: Liam Ditscheiner
+        email: lditsche@ucsc.edu
+      - name: Marc Romero
+        email: mromer28@ucsc.edu
+      - name: Marco Frank
+        email: mfrank1@ucsc.edu
+
+  - projects: "E. Video Encoder and/or Processing"
+    name: Video-Processor-CSE-127
+    repo: https://github.com/judyladella/Video-Processor-CSE-127
+    members:
+      - name: Aadarsha Kandel
+        email: aakandel@ucsc.edu
+      - name: Alex Wang
+        email: awang119@ucsc.edu
+      - name: Angelica Arroyo
+        email: aarroy13@ucsc.edu
+      - name: Ben Watkins
+        email: bdwatkin@ucsc.edu
+      - name: Judyanna Ladella
+        email: jladella@ucsc.edu
+      - name: Tlaloc Ruiz
+        email: tlaruiz@ucsc.edu
+
+  - projects: "C. TPU/ML Accelerator"
+    name: slugtpu
+    repo: https://github.com/SlugTPU/slugtpu
+    members:
+      - name: Jason Yang
+        email: hyang175@ucsc.edu
+      - name: Aditya Kumar
+        email: akumar93@ucsc.edu
+      - name: Angelina Nguyen
+        email: anguy490@ucsc.edu
+      - name: Nathan Pham
+        email: nappham@ucsc.edu
+      - name: Shreyas Gupta
+        email: sgupt102@ucsc.edu
+
+  - projects: "B. Audio Detection SoC with ML recognizer"
+    name: ML-Audio
+    repo: https://github.com/kjconway5/ML-Audio
+    members:
+      - name: Aydan Olaez
+        email: aolaez@ucsc.edu
+      - name: Diego Nocera
+        email: dnocera@ucsc.edu
+      - name: Jose Peralta
+        email: jlperalt@ucsc.edu
+      - name: Kye Conway
+        email: kjconway@ucsc.edu
+      - name: Michael Aguero
+        email: mbaguero@ucsc.edu
+
+  - projects: "I. Network on Chip"
+    name: 127_NOC
+    repo: https://github.com/sumimuktevi/127_NOC
+    members:
+      - name: Aan Yadav
+        email: aayadav@ucsc.edu
+      - name: Paul Lee
+        email: flee14@ucsc.edu
+      - name: Psi Padhya
+        email: ppadhya@ucsc.edu
+      - name: Sumedha Muktevi
+        email: sumuktev@ucsc.edu
+      - name: Andrea Arreortua
+        email: aarreort@ucsc.edu
+      - name: Ethan Francis
+        email: etcfranc@ucsc.edu
+
+  - projects: "Combined L/O: L. Memory Controller, O. Full/Quarter Interposer System"
+    name: Open_Memory_Manager
+    repo: https://github.com/Alb111/Open_Memory_Manager
+    members:
+      - name: Albert Felix
+        email: afelix13@ucsc.edu
+      - name: Jack Wong
+        email: jwon1018@ucsc.edu
+      - name: Nicholas Gaither
+        email: ngaither@ucsc.edu
+      - name: Rishikesh Sethuraman
+        email: rrsethur@ucsc.edu
+      - name: Saanj Shetty
+        email: syshetty@ucsc.edu
+
+  - projects: "H. Wearable Device and/or Sensor SoC"
+    name: SensorSoC
+    repo: https://github.com/JBFSF/SensorSoC.git
+    members:
+      - name: Ananya Manduva
+        email: amanduva@ucsc.edu
+      - name: Jackson Friday
+        email: jfriday@ucsc.edu
+      - name: Nathan Nakamoto
+        email: nnakamot@ucsc.edu
+      - name: Nithin Duvvuru
+        email: nduvvuru@ucsc.edu
+      - name: Rishi Govindan
+        email: rigovind@ucsc.edu
+      - name: Shane Stearns
+        email: sgstearn@ucsc.edu
