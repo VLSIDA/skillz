@@ -1,5 +1,6 @@
 groups:
   - projects: "Example Group Project"
+    name: group-project
     repo: https://github.com/org/group-project
     members:
       - name: Student One
@@ -10,6 +11,7 @@ groups:
         email: XXX@ucsc.edu
 
   - projects: "Another Group Project"
+    name: another-project
     repo: https://github.com/org/another-project
     members:
       - name: Student Four
@@ -21,7 +23,19 @@ groups:
       - name: Student Seven
         email: XXX@ucsc.edu
 
+  - projects: "Combined A/B: A. First Project, B. Second Project"
+    name: multi-repo-project
+    repo: https://github.com/org/multi-repo-main
+    extra_repos:
+      - https://github.com/org/multi-repo-secondary
+    members:
+      - name: Student Eight
+        email: XXX@ucsc.edu
+      - name: Student Nine
+        email: XXX@ucsc.edu
+
   - projects: "Grad Student Individual Project"
+    name: grad-project
     repo: https://github.com/jdoe/grad-project
     members:
       - name: Grad Student One
