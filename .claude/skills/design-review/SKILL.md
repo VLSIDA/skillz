@@ -24,6 +24,15 @@ The primary analysis should focus on the main branch. Also examine other branche
 
 If any of these commands fail, note the failure in the report but continue with the review.
 
+## Extra Repositories
+
+Check `groups.yaml` in the current working directory for a group whose `name` matches the repo directory basename. If that group has an `extra_repos` list, each extra repo is cloned at `<repo-dir>/<basename-of-extra-repo-url>` (stripping any trailing `.git` suffix from the URL to get the basename).
+
+For each extra repo that exists on disk:
+1. Update it the same way as the main repo (checkout main/master, pull, update submodules).
+2. Include it in the same review — evaluate its code, documentation, testing, and organization alongside the main repo, clearly labeling which repo each finding comes from.
+3. Cover all extra repos in each rubric section. The review should treat the full set of repos as one project.
+
 ## Guidelines
 
 - Read the most relevant files: RTL code (Verilog/SystemVerilog/VHDL), testbenches, build scripts, Makefiles, READMEs, and configuration files.
@@ -77,6 +86,8 @@ Use the following markdown structure for the report:
 
 ```
 # Chip Design Review: [Project Name]
+
+**Repositories:** [list the repo URL(s) from groups.yaml — main repo and any extra_repos]
 
 ## 0. Design Documentation — [Rating]
 [What documentation exists and where]

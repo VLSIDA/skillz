@@ -30,7 +30,7 @@ with open(sys.argv[1]) as f:
 for g in data.get('groups', []):
     name = g.get('name', '')
     for url in g.get('extra_repos', []):
-        basename = url.rstrip('/').split('/')[-1]
+        basename = url.rstrip('/').removesuffix('.git').split('/')[-1]
         target = os.path.join(name, basename)
         if os.path.isdir(target):
             print(f'Skipping {target} (already exists)')

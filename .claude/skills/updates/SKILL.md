@@ -27,6 +27,15 @@ The primary analysis should focus on the main branch. Also examine other branche
 
 If any of these commands fail, note the failure in the report but continue.
 
+## Extra Repositories
+
+Check `groups.yaml` in the current working directory for a group whose `name` matches the repo directory basename. If that group has an `extra_repos` list, each extra repo is cloned at `<repo-dir>/<basename-of-extra-repo-url>` (stripping any trailing `.git` suffix from the URL to get the basename).
+
+For each extra repo that exists on disk:
+1. Update it the same way as the main repo (checkout main/master, pull, update submodules).
+2. Include its changes in the same report — analyze commits, new/modified files, and design progress the same way as the main repo, clearly labeling which repo each change comes from.
+3. Cover all extra repos in each section of the report (Change Summary, New and Modified Files, Design Progress, Open Issues, Assessment).
+
 ## Analysis
 
 ### 1. Change Summary
@@ -69,6 +78,7 @@ Provide an overall assessment of the project's progress during this period:
 ```
 # Updates Review: [Project Name]
 
+**Repositories:** [list the repo URL(s) from groups.yaml — main repo and any extra_repos]
 **Period:** [since-date] to present
 **Commits in period:** N
 

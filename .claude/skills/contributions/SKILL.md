@@ -27,6 +27,15 @@ The primary analysis should focus on the main branch. Also examine other branche
 
 If any of these commands fail, note the failure in the report but continue.
 
+## Extra Repositories
+
+Check `groups.yaml` in the current working directory for a group whose `name` matches the repo directory basename. If that group has an `extra_repos` list, each extra repo is cloned at `<repo-dir>/<basename-of-extra-repo-url>` (stripping any trailing `.git` suffix from the URL to get the basename).
+
+For each extra repo that exists on disk:
+1. Update it the same way as the main repo (checkout main/master, pull, update submodules).
+2. Include its contributions in the same report — analyze commits, authors, and quality the same way as the main repo, clearly labeling which repo each contribution comes from.
+3. Combine the contribution data across all repos for each contributor (they may commit to multiple repos).
+
 ## Part 1: Contribution Volume
 
 Analyze commit activity on the main branch since the given date:
@@ -60,6 +69,7 @@ For each contributor, provide:
 ```
 # Contribution Analysis: [Project Name]
 
+**Repositories:** [list the repo URL(s) from groups.yaml — main repo and any extra_repos]
 **Period:** [since-date] to present
 
 ## Contribution Volume
