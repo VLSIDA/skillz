@@ -1,40 +1,55 @@
 #!/bin/bash
 
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <groups.yaml>"
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <groups.yaml> [group_name ...]"
     exit 1
 fi
 
-if [ ! -f "$1" ]; then
-    echo "Error: file '$1' not found"
+YAML="$1"
+shift
+
+if [ ! -f "$YAML" ]; then
+    echo "Error: file '$YAML' not found"
     exit 1
 fi
 
-# Read name/repo pairs from YAML and clone into the name directory
-paste <(grep '^\s*name:' "$1" | sed 's/.*name:\s*//') \
-      <(grep '^\s*repo:' "$1" | sed 's/.*repo:\s*//') |
+# If group names given, filter to just those; otherwise process all
+FILTER=("$@")
+
+paste <(grep '^\s*name:' "$YAML" | sed 's/.*name:\s*//') \
+      <(grep '^\s*repo:' "$YAML" | sed 's/.*repo:\s*//') |
 while read -r name repo; do
+    if [ ${#FILTER[@]} -gt 0 ]; then
+        match=0
+        for f in "${FILTER[@]}"; do [ "$f" = "$name" ] && match=1 && break; done
+        [ "$match" -eq 0 ] && continue
+    fi
     if [ -d "$name" ]; then
-        echo "Skipping $name (already exists)"
+        echo "Updating $name ..."
+        git -C "$name" pull --ff-only || echo "Failed to update $name"
     else
         echo "Cloning $repo into $name ..."
         git clone "$repo" "$name" || echo "Failed to clone $repo"
     fi
 done
 
-# Clone extra_repos into <name>/<basename> directories
+# Clone/update extra_repos
 python3 -c "
 import yaml, sys, os, subprocess
 with open(sys.argv[1]) as f:
     data = yaml.safe_load(f)
+filt = set(sys.argv[2:])
 for g in data.get('groups', []):
     name = g.get('name', '')
+    if filt and name not in filt:
+        continue
     for url in g.get('extra_repos', []):
         basename = url.rstrip('/').removesuffix('.git').split('/')[-1]
         target = os.path.join(name, basename)
         if os.path.isdir(target):
-            print(f'Skipping {target} (already exists)')
+            print(f'Updating {target} ...')
+            subprocess.run(['git', '-C', target, 'pull', '--ff-only'])
         else:
             print(f'Cloning {url} into {target} ...')
             subprocess.run(['git', 'clone', url, target])
-" "$1"
+" "$YAML" "$@"

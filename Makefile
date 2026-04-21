@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 YAML = groups.yaml
-GROUPS = $(shell grep '^\s*name:' $(YAML) | sed 's/.*name:\s*//')
+GROUPS ?= $(shell grep '^\s*name:' $(YAML) | sed 's/.*name:\s*//')
 
 REVIEWS_MD  = $(foreach g,$(GROUPS),design-review-$(g).md)
 REVIEWS_HTML = $(foreach g,$(GROUPS),design-review-$(g).html)
@@ -18,15 +18,15 @@ FORCE:
 
 all: $(REVIEWS_HTML)
 
-design-review-%.md: % FORCE
+design-review-%.md: .cloned-% FORCE
 	truncate -s 0 $@
-	claude -p --verbose --permission-mode acceptEdits "/design-review $<"
+	claude -p --verbose --permission-mode acceptEdits "/design-review $*"
 
 %.html: %.md
 	sed 's/^- /\n- /' $< | pandoc -f markdown -o $@ -s --metadata title=" " -H <(echo '<style>body { max-width: 72em; } li { margin-bottom: 0.5em; }</style>')
 
 define contributions_rule
-contributions-$(1)-$$(DATE).md: $(1) FORCE
+contributions-$(1)-$$(DATE).md: .cloned-$(1) FORCE
 	truncate -s 0 contributions-$(1).md
 	claude -p --verbose --permission-mode acceptEdits "/contributions $(1) $$(SINCE)"
 	mv contributions-$(1).md $$@
@@ -34,16 +34,16 @@ endef
 $(foreach g,$(GROUPS),$(eval $(call contributions_rule,$(g))))
 
 define updates_rule
-updates-$(1)-$$(DATE).md: $(1) FORCE
+updates-$(1)-$$(DATE).md: .cloned-$(1) FORCE
 	truncate -s 0 updates-$(1).md
 	claude -p --verbose --permission-mode acceptEdits "/updates $(1) $$(SINCE)"
 	mv updates-$(1).md $$@
 endef
 $(foreach g,$(GROUPS),$(eval $(call updates_rule,$(g))))
 
-prompt-injection-audit-%.md: % FORCE
+prompt-injection-audit-%.md: .cloned-% FORCE
 	truncate -s 0 $@
-	claude -p --verbose --permission-mode acceptEdits "/prompt-injection-audit $<"
+	claude -p --verbose --permission-mode acceptEdits "/prompt-injection-audit $*"
 
 ifdef GROUP
 design-review: design-review-$(GROUP).md design-review-$(GROUP).html
@@ -56,6 +56,10 @@ contributions: $(CONTRIBUTIONS_MD) $(CONTRIBUTIONS_HTML)
 updates: $(UPDATES_MD) $(UPDATES_HTML)
 audit: $(AUDIT_MD) $(AUDIT_HTML)
 endif
+
+.cloned-%: $(YAML) FORCE
+	./clone-repos.sh $(YAML) $*
+	@touch $@
 
 clone:
 	./clone-repos.sh $(YAML)
